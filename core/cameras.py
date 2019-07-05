@@ -1,12 +1,12 @@
 import numpy as np
 import os
 import cv2
-cv = cv2.cv
+#cv = cv2.cv
 import time
 import pylab as pl
 import json
 import sys
-import multicam as mc
+from . import multicam as mc
 from threading import Thread
 try:
     import flycapture2 as fc2
@@ -207,7 +207,7 @@ if __name__ == '__main__':
         if ts:
             #cv2.imshow('a',fr)
             #x=cv2.waitKey(1)
-            print ts-lastts
+            print((ts-lastts))
             lastts = ts
             #if x == ord('q'):
             #    break

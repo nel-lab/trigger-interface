@@ -1,6 +1,6 @@
 import numpy as np 
 import time
-from cameras import Camera
+from .cameras import Camera
 import os
 import json
 import cv2
@@ -80,7 +80,7 @@ class Monitor(object):
             np.savez_compressed(cam[:cam.index('.avi')], data=frames.astype(np.uint8), time=self.times[idx])
             mov.release()
     def next_frame(self):
-        for cam_idx,win,cam in zip(range(len(self.cameras)),self.windows,self.cameras):
+        for cam_idx,win,cam in zip(list(range(len(self.cameras))),self.windows,self.cameras):
             frame, timestamp = cam.read()
             frame, timestamp = cam.read()
             if self.show:

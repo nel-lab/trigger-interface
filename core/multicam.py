@@ -132,8 +132,8 @@ def test_Ps3Eye():
 def main():
     import cv
     from array import array
-    print 'camera count', CLEyeGetCameraCount()
-    print 'UUID for first camera', CLEyeGetCameraUUID(0)
+    print(('camera count', CLEyeGetCameraCount()))
+    print(('UUID for first camera', CLEyeGetCameraUUID(0)))
     cam = CLEyeCreateCamera(CLEyeGetCameraUUID(0), CLEYE_MONO_PROCESSED, CLEYE_VGA, 75)
     #print cam
     CLEyeSetCameraParameter(cam, CLEYE_AUTO_GAIN, 0)
@@ -145,14 +145,14 @@ def main():
     CLEyeSetCameraParameter(cam, CLEYE_WHITEBALANCE_RED, 50)
     CLEyeSetCameraParameter(cam, CLEYE_WHITEBALANCE_BLUE, 50)
     CLEyeSetCameraParameter(cam, CLEYE_WHITEBALANCE_GREEN, 50)
-    print "auto gain", CLEyeGetCameraParameter(cam, CLEYE_AUTO_GAIN)
-    print "auto exposure", CLEyeGetCameraParameter(cam, CLEYE_AUTO_EXPOSURE)
-    print "auto whitebalance", CLEyeGetCameraParameter(cam, CLEYE_AUTO_WHITEBALANCE)
-    print "gain", CLEyeGetCameraParameter(cam, CLEYE_GAIN)
-    print "exposure", CLEyeGetCameraParameter(cam, CLEYE_EXPOSURE)
-    print "red", CLEyeGetCameraParameter(cam, CLEYE_WHITEBALANCE_RED)
-    print "green", CLEyeGetCameraParameter(cam, CLEYE_WHITEBALANCE_BLUE)
-    print "blue", CLEyeGetCameraParameter(cam, CLEYE_WHITEBALANCE_GREEN)
+    print(("auto gain", CLEyeGetCameraParameter(cam, CLEYE_AUTO_GAIN)))
+    print(("auto exposure", CLEyeGetCameraParameter(cam, CLEYE_AUTO_EXPOSURE)))
+    print(("auto whitebalance", CLEyeGetCameraParameter(cam, CLEYE_AUTO_WHITEBALANCE)))
+    print(("gain", CLEyeGetCameraParameter(cam, CLEYE_GAIN)))
+    print(("exposure", CLEyeGetCameraParameter(cam, CLEYE_EXPOSURE)))
+    print(("red", CLEyeGetCameraParameter(cam, CLEYE_WHITEBALANCE_RED)))
+    print(("green", CLEyeGetCameraParameter(cam, CLEYE_WHITEBALANCE_BLUE)))
+    print(("blue", CLEyeGetCameraParameter(cam, CLEYE_WHITEBALANCE_GREEN)))
     
     
     x, y = CLEyeCameraGetFrameDimensions(cam)

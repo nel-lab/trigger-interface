@@ -1,4 +1,4 @@
-from core.cameras import Camera
+from pseyepy import Camera
 from core.daq import Trigger
 from interface_eyeblink import Experiment, TriggerCycle
 
@@ -8,7 +8,7 @@ name = 'AG051514-01/062214_-34 490 193_EXT_A_'
 
 #name = 'AG052914-01/061914__114 -328 8_US_ONLY'
 
-cam =  Camera(idx=0, resolution=(320,240), frame_rate=200, color_mode=Camera.BW)
+cam =  Camera(ids=[0], resolution=Camera.RES_SMALL, frame_rate=185, colour=False)
 
 CS = Trigger(msg=[0,0,1,1], duration=4.0, name='CS')
 US = Trigger(msg=[1,1,0,0], duration=4.0, name='US')

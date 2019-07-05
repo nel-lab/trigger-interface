@@ -52,7 +52,7 @@ while True:
     img = np.array(im)
     ts = im.get_timestamp()
     #cv2.imshow('a',img)
-    print diff(last_ts,ts)
+    print((diff(last_ts,ts)))
     #cv2.waitKey(1)
     last_ts = ts
     #vw.write(img)

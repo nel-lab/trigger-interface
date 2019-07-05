@@ -20,11 +20,11 @@ from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas
 
 #opencv
 import cv2
-cv = cv2.cv
+#cv = cv2.cv
 
 #custom
 from core.daq import DAQ, Trigger
-from core.cameras import Camera
+from pseyepy import Camera
 
 # interface
 import wx
@@ -351,8 +351,8 @@ class Experiment(wx.Frame):
             return False
         return self.monitor_vals['WHEEL'][-1] < self.movement_threshold.v
     def send_trigger(self):
-        self.daq.trigger(self.trigger_cycle.next)
-        print "Sent trigger #%i"%(self.trial_number.v+1)
+        self.daq.trigger(self.trigger_cycle.__next__)
+        print(("Sent trigger #%i"%(self.trial_number.v+1)))
     def start_recording(self):
         self.recording.v = True
         self.start_time = pytime.time()
@@ -382,7 +382,7 @@ class Experiment(wx.Frame):
             self.on_exit(None)
     def next_frame(self):
         frame, timestamp = self.camera.read()
-        cv2.polylines(frame, [self.mask_pts[m] for m in self.mask_names if m in self.masks.keys()], 1, (255,255,255), thickness=2)
+        cv2.polylines(frame, [self.mask_pts[m] for m in self.mask_names if m in list(self.masks.keys())], 1, (255,255,255), thickness=2)
         self.panel_camera.update_image(frame)
 
         if not self.begun:

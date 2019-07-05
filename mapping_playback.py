@@ -55,7 +55,7 @@ def plot(name, n):
     n = min(n,fh.n_trials)
     #allmeans = []
     #allts = []
-    for i in xrange(n):
+    for i in range(n):
         vc = cv2.VideoCapture(fh.get_path(fh.n_trials-i,fh.CAM,1))
         t = np.load(fh.get_path(fh.n_trials-i,fh.TIME))
         ts = t['time1']
@@ -63,7 +63,7 @@ def plot(name, n):
         trigt = t['trigger'][0] - ts[0] + TRIG_DELAY
         ts = ts-ts[0]
         meanf = []
-        for i in xrange(len(ts)):
+        for i in range(len(ts)):
             valid,fr = vc.read()
             meanf.append(np.mean(fr))
         #allmeans.append(meanf)
@@ -80,22 +80,22 @@ def play(name):
     vcs = []
     if fh.n_trials < 1:
         return
-    for cam in xrange(1,fh.n_cams+1):
+    for cam in range(1,fh.n_cams+1):
         vc = cv2.VideoCapture(fh.get_path(fh.n_trials,fh.CAM,cam))
         vcs.append(vc)
     t = np.load(fh.get_path(fh.n_trials,fh.TIME))
-    ts = [t['time%i'%i] for i in xrange(1,fh.n_cams+1)]
+    ts = [t['time%i'%i] for i in range(1,fh.n_cams+1)]
     t0s = [i[0][1] if type(i[0]) in [list,np.ndarray] else i[0] for i in ts]
 
     width = 430
-    for i in xrange(1,fh.n_cams+1):
+    for i in range(1,fh.n_cams+1):
         cv2.namedWindow(str(i))
         cv2.moveWindow(str(i), 5+width*(i-1)+(i-1)*20,5)
     Ts = 20
     while True:
         anytrue = False
         mint = np.min([st[1] if len(st)==3 else st[0] for st in [t[0] for t in ts]])
-        for vci,vc,t in zip(xrange(len(vcs)),vcs,ts):
+        for vci,vc,t in zip(list(range(len(vcs))),vcs,ts):
             qtime = t[0]
             if len(qtime) == 3:    
                 qtime=qtime[1]

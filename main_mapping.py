@@ -6,7 +6,7 @@ import os
 data_dir = os.path.join('.','data')
 name = ''
 while name == '':
-    name = raw_input('Enter experiment name:').lower()
+    name = input('Enter experiment name:').lower()
     
 pseye_params = dict(gain = 80,\
 exposure = 34,\
